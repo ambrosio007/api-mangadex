@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/buscar_manga.css">
+    <title>Pesquisa de Manga</title>
+</head>
+<body>
+    <form action="/" method="post">
+        <label for="nome_manga">Nome do manga :</label>
+        <input type="text" name="nome_manga" placeholder="Digite o nome do manga...">
+        <br>
+        <br>
+        <div class="dropdown" id="dropdownIncluir">
+            <button type="button" class="dropdown-btn" name="incluir">Categorias que deve ter ▼</button>
+            <div class="dropdown-content">
+              <label><input type="checkbox" value="action"> Ação</label>
+              <label><input type="checkbox" value="romance"> Romance</label>
+              <label><input type="checkbox" value="comedy"> Comédia</label>
+              <label><input type="checkbox" value="drama"> Drama</label>
+              <label><input type="checkbox" value="fantasy"> Fantasia</label>
+              <label><input type="checkbox" value="horror"> Terror</label>
+              <label><input type="checkbox" value="ecchi"> Ecchi</label>
+              <label><input type="checkbox" value="harem"> Harem</label>
+              <label><input type="checkbox" value="isekai"> Isekai</label>
+              <label><input type="checkbox" value="sports"> Esportes</label>
+            </div>
+          </div>
+          <br>
+          <br>
+          <!-- Dropdown excluir -->
+          <div class="dropdown" id="dropdownExcluir">
+            <button type="button" class="dropdown-btn" name="remoevr">Categorias que não pode ter ▼</button>
+            <div class="dropdown-content">
+              <label><input type="checkbox" value="action"> Ação</label>
+              <label><input type="checkbox" value="romance"> Romance</label>
+              <label><input type="checkbox" value="comedy"> Comédia</label>
+              <label><input type="checkbox" value="drama"> Drama</label>
+              <label><input type="checkbox" value="fantasy"> Fantasia</label>
+              <label><input type="checkbox" value="horror"> Terror</label>
+              <label><input type="checkbox" value="ecchi"> Ecchi</label>
+              <label><input type="checkbox" value="harem"> Harem</label>
+              <label><input type="checkbox" value="isekai"> Isekai</label>
+              <label><input type="checkbox" value="sports"> Esportes</label>
+            </div>
+          </div>
+        
+          <br><br>
+          <button onclick="buscar()">Buscar</button>
+        
+    </form>
+
+    <h2>Resultados da busca</h2>
+    
+    <ul>
+      {% for manga in mangas %}
+        <li>
+          <strong>{{ manga.title }}</strong> ({{ manga.status }})<br>
+          {% if manga.cover %}
+            <img src="{{ manga.cover }}" alt="Capa de {{ manga.title }}">
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+
+    <script src="/static/buscar.js"></script>
+</body>
+</html>
