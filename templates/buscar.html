@@ -53,16 +53,13 @@
 
     <h2>Resultados da busca</h2>
     
-    <ul>
-      {% for manga in mangas %}
-        <li>
-          <strong>{{ manga.title }}</strong> ({{ manga.status }})<br>
-          {% if manga.cover %}
-            <img src="{{ manga.cover }}" alt="Capa de {{ manga.title }}">
-          {% endif %}
-        </li>
-      {% endfor %}
-    </ul>
+    {% for manga in mangas %}
+      <div class="manga-card">
+        <h3>{{ manga.title }}</h3>
+        <p>Status: {{ manga.status }}</p>
+        <img src="{{ manga.cover }}" alt="Capa de {{ manga.title }}">
+      </div>
+    {% endfor %}
 
     <script src="/static/buscar.js"></script>
 </body>
